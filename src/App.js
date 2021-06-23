@@ -1,37 +1,37 @@
 import React, { useState } from "react";
-import NotesList from "./components/NotesList";
+import TodosList from "./components/TodosList";
 import SearchBar from "./components/SearchBar";
 import "./index.css";
 
 const App = () => {
-  const [notes, setNotes] = useState([]);
+  const [todos, setTodos] = useState([]);
   const [term, setTerm] = useState("");
 
   let id = Math.floor(Math.random() * 10000);
 
-  const addNoteHandler = (text) => {
-    const date = new Date().getDate();
-    const newNote = {
+  const addTodoHandler = (text) => {
+    const date = new Date().toLocaleDateString();
+    const newTodo = {
       date: date,
       text,
       id: id,
     };
 
-    const newNotes = [...notes, newNote];
-    setNotes(newNotes);
+    const newTodos = [newTodo, ...todos];
+    setTodos(newTodos);
   };
 
-  const deleteNoteHandler = (id) => {
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
+  const deleteTodoHandler = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
   };
   return (
     <div className="container">
-      {notes.length > 0 && <SearchBar term={term} setTerm={setTerm} />}
-      <NotesList
-        notes={notes.filter((note) => note.text.toLowerCase().includes(term))}
-        addNoteHandler={addNoteHandler}
-        deleteNoteHandler={deleteNoteHandler}
+      {todos.length > 0 && <SearchBar term={term} setTerm={setTerm} />}
+      <TodosList
+        todos={todos.filter((todo) => todo.text.toLowerCase().includes(term))}
+        addTodoHandler={addTodoHandler}
+        deleteTodoHandler={deleteTodoHandler}
       />
     </div>
   );
