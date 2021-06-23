@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import NotesList from "./components/NotesList";
+import SearchBar from "./components/SearchBar";
+import "./index.css";
 
-function App() {
+const App = () => {
+  const [notes, setNotes] = useState([]);
+  const [term, setTerm] = useState("");
+
+  let id = Math.floor(Math.random() * 10000);
+
+  const addNoteHandler = (text) => {
+    const date = new Date().getDate();
+    const newNote = {
+      date: date,
+      text,
+      id: id,
+    };
+
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  };
+
+  const deleteNoteHandler = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {notes.length > 0 && <SearchBar term={term} setTerm={setTerm} />}
+      <NotesList
+        notes={notes.filter((note) => note.text.toLowerCase().includes(term))}
+        addNoteHandler={addNoteHandler}
+        deleteNoteHandler={deleteNoteHandler}
+      />
     </div>
   );
-}
+};
 
 export default App;
