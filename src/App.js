@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import TodosList from "./components/TodosList";
 import SearchBar from "./components/SearchBar";
 import "./index.css";
+import Header from "./Header";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [term, setTerm] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   let id = Math.floor(Math.random() * 10000);
 
@@ -26,7 +28,8 @@ const App = () => {
     setTodos(newTodos);
   };
   return (
-    <div className="container">
+    <div className={`container ${darkMode && "dark-mode"}`}>
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       {todos.length > 0 && <SearchBar term={term} setTerm={setTerm} />}
       <TodosList
         todos={todos.filter((todo) => todo.text.toLowerCase().includes(term))}

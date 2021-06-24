@@ -10,6 +10,21 @@ body {
   background-color: rgb(197, 174, 214);
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: indigo;
+}
+
+.dark-toggler {
+  
+}
+
+.dark-input {
+  opacity: 0;
+}
+
 .searchbar-container {
   justify-self: center;
   margin-bottom: 10px;
@@ -93,7 +108,7 @@ textarea:focus {
 }
 
 .btn.save-btn {
-  color: green;
+  color: indigo;
 }
 
 .btn.delete-btn {
