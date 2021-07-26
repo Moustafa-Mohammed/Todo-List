@@ -7,12 +7,7 @@ const Todo = ({ text, date, id, deleteTodoHandler }) => {
       <div className="todo-footer">
         <small><span className="span">added at:</span> {date}</small>
         <div className="todo-btns">
-          <button
-            className="btn edit-btn"
-            onClick={() => deleteTodoHandler(id)}
-          >
-            Edit
-          </button>
+ 
           <button
             className="btn delete-btn"
             onClick={() => deleteTodoHandler(id)}
