@@ -17,6 +17,8 @@ function AddTodo({ addTodoHandler }) {
     }
   };
 
+  
+
   return (
     <div className="todo new-todo">
       <textarea

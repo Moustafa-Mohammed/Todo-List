@@ -1,6 +1,8 @@
 body {
   background-color: #ddd;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: blueviolet;
+  text-align: center;
 }
 .container {
   max-width: 320px;
@@ -8,21 +10,12 @@ body {
   margin-left: auto;
   padding: 15px;
   background-color: rgb(197, 174, 214);
+  border-radius: 6px;
+  text-align: center;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h1 {
   color: indigo;
-}
-
-.dark-toggler {
-  
-}
-
-.dark-input {
-  opacity: 0;
 }
 
 .searchbar-container {
@@ -43,10 +36,13 @@ body {
 }
 
 .todos-list {
-  display: grid;
+  margin: 20px auto;
+  width: 90%;
+  background-color: blueviolet;
+  display: flex;
   gap: 1rem;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  text-align-last: left;
+  flex-wrap: wrap;
 }
 
 .todo {
@@ -57,6 +53,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
   color: indigo;
+  width: 250px;
+  height: auto;
+}
+
+div.todo:nth-child(odd):not(.new-todo) {
+  background-color: rgb(197, 174, 214);
 }
 
 .todo-footer {
